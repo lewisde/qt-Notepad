@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import os
 import sys
 from PyQt5.QtWidgets import QMainWindow
@@ -58,6 +60,12 @@ class Example(QMainWindow):
         paste_action = QAction('Paste', self)
         paste_action.setShortcut('Ctrl+V')
 
+        minimize_action = QAction('Minimize', self)
+        minimize_action.setShortcut('Ctrl+M')
+
+        view_action = QAction('Show', self)
+        view_action.setShortcut('Ctrl+/')
+
         menubar = self.menuBar()
         file_menu = menubar.addMenu('&File')
         edit_menu = menubar.addMenu('&Edit')
@@ -74,6 +82,10 @@ class Example(QMainWindow):
         edit_menu.addAction(copy_action)
         edit_menu.addAction(cut_action)
         edit_menu.addAction(paste_action)
+
+        view_menu.addAction(view_action)
+
+        window_menu.addAction(minimize_action)
 
         self.text = QTextEdit(self)
         self.setCentralWidget(self.text)
