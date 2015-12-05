@@ -30,7 +30,13 @@ class MainWindow(QMainWindow):
         self.tabs.setMovable(True)
         self.tabs.tabCloseRequested.connect(self.closeTab)
         if filename:
-            self.tabs.addTab(QTextEdit(), filename)
+            f = open(filename, 'r')
+            filedata = f.read()
+            f.close()
+            newfile = QTextEdit()
+            newfile.setText(filedata)
+            i = self.tabs.addTab(newfile, filename)
+            self.tabs.setCurrentIndex(i)
         else:
             self.open_file()
 
